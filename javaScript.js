@@ -7,14 +7,22 @@
 // If there's an odd number of characters in the string, ignore the center character.
 
 //Soluzione fatta da me
+//Ho creato una funzione per l'esercizio
 function isBalanced(valore) {
+//Ho creato una variabile che contenga le vocali di sinistra
   let vocaliSinistra = [];
+//Ho creato una variabile che contenga le vocali di destra
   let vocaliDestra = [];
+//Qui verrà inserito il nome del vincitore
   let partePiuVocali = "";
+//Assegno ad una variabile la lunghezza del valore che verrà inserito
   let lunghezza = valore.length;
+//Calcolo l'indice centrale che mi servirà in seguito
   let indiceCentrale = Math.floor(lunghezza / 2);
-
+//Ciclo tutte le lettere
   for (let i = 0; i < lunghezza; i++) {
+//Ho creato un ciclo if con un operatore logico che mi prende metà stringa
+//e solo e vocali e le pusha nelle variabili create in precedenza
     if (i < indiceCentrale && (
         valore[i] === "a" ||
         valore[i] === "e" ||  
@@ -32,6 +40,8 @@ function isBalanced(valore) {
         {
       vocaliDestra.push(valore[i]);
     }
+//Infine ho creato un if per valutare chi sia il vincitore tra la parte sinsitra
+//o quella destra, con l'opzione pareggio
   if (vocaliSinistra.length > vocaliDestra.length) {
     partePiuVocali = ("La parte della stringa con più vocali è la sinsitra")
   } else if (vocaliSinistra.length < vocaliDestra.length) {
@@ -40,9 +50,10 @@ function isBalanced(valore) {
     partePiuVocali = ("Sono uguali")
   }
 }
+//Ritorno il valore della funzione
   return partePiuVocali;
 }
-
+//Faccio un console.log per mandare il risultato in console
 console.log(isBalanced("canederli"));
 
 //Soluzione ChatGpt
