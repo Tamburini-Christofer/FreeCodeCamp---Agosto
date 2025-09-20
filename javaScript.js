@@ -128,6 +128,7 @@ Il codice è un po’ ripetitivo: il controllo delle vocali con tanti || può di
 
 🌟 Valutazione complessiva: direi 7,5/10. Hai centrato la logica, devi solo pulire la sintassi e rendere più elegante il controllo.*/
 
+
 // 13 Agosto 2025
 // /**************************************************************************************************************************** */
 // The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones. When starting with 0 and 1, the first 10 numbers in the sequence are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34.
@@ -207,4 +208,60 @@ console.log(fibonacciSequence([0, 1], 10));
 
 // Vuoi che ti riscriva il tuo codice iniziale corretto riga per riga (senza cambiare troppo la struttura, solo aggiustando gli errori), così vedi la differenza?
 
+// 14 Agosto 2025
+// /**************************************************************************************************************************** */
+// Data una stringa, rimuovi tutti gli spazi dalla stringa, inserisci due spazi tra ogni carattere, converti tutte le lettere alfabetiche in maiuscolo e restituisci il risultato.
+
+// I caratteri non alfabetici devono rimanere invariati (ad eccezione degli spazi).
+
+//Mio codice 
+//Creo la funzione 
+function spaceJam(stringa) {
+
+//Tolgo gli spazi (Errore!! Trim elimina solo gli spazi iniziali e finali)
+    stringa = stringa.trim();
+//Separo i caratteri
+    stringa = stringa.split("");
+//Creo uno spazio tra caratteri
+    stringa = stringa.join(" ");
+//Rendiamo tutto maiuscolo
+    stringa = stringa.toUpperCase();
+//Returniamo a stringa
+  return stringa;
+}
+console.log(spaceJam("ho 23 gatti e 33 cani nel giardino 1"));
+
+//Codice ChatGpt
+function spaceJam(stringa) {
+  stringa = stringa.replace(/\s+/g, ""); // rimuove tutti gli spazi
+  stringa = stringa.split("");           // separa i caratteri
+  stringa = stringa.join("  ");          // due spazi tra i caratteri
+  stringa = stringa.toUpperCase();       // trasforma in maiuscolo
+  return stringa;
+}
+
+console.log(spaceJam("ho 22 gatti e 33 cani nel giardino 1"));         // "C  A  N  E"
+console.log(spaceJam("Hello World!"));  // "H  E  L  L  O  W  O  R  L  D  !"
+
+// Direi che il tuo esercizio mostra che hai capito bene i passaggi fondamentali per trasformare una stringa in JavaScript:
+
+// ✅ Punti positivi:
+
+// Hai usato i metodi giusti (trim, split, join, toUpperCase).
+
+// La sequenza logica delle operazioni è chiara: tagliare → dividere → unire → maiuscolo.
+
+// Il codice è leggibile e ordinato.
+
+// ⚠️ Piccoli errori:
+
+// trim() elimina solo gli spazi ai bordi, non quelli interni → quindi non rispettava la consegna di eliminare tutti gli spazi.
+
+// join(" ") inseriva un solo spazio, ma ne servivano due.
+
+// All’inizio avevi provato con toUpperScale() (errore di metodo), ma poi hai corretto.
+
+// ⭐ Valutazione complessiva: Sei sulla strada giusta, direi 7,5/10. Ti sei mosso bene con gli strumenti, hai solo bisogno di fare più attenzione ai dettagli della consegna (quanti spazi, che tipo di spazi, ecc.).
+
+// Vuoi che ti proponga un paio di variazioni più avanzate dello stesso esercizio, per allenarti ancora meglio?
 
