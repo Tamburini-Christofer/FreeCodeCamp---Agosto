@@ -6,7 +6,7 @@
 // The letters a, e, i, o, and u, in either uppercase or lowercase, are considered vowels.
 // If there's an odd number of characters in the string, ignore the center character.
 
-//Soluzione fatta da me
+//Soluzione fatta da me                                     QA<
 //Ho creato una funzione per l'esercizio
 function isBalanced(valore) {
 //Ho creato una variabile che contenga le vocali di sinistra
@@ -127,3 +127,84 @@ Devi ricordarti sempre di passare le stringhe tra virgolette ("canederli" e non 
 Il codice è un po’ ripetitivo: il controllo delle vocali con tanti || può diventare più elegante con .includes().
 
 🌟 Valutazione complessiva: direi 7,5/10. Hai centrato la logica, devi solo pulire la sintassi e rendere più elegante il controllo.*/
+
+// 13 Agosto 2025
+// /**************************************************************************************************************************** */
+// The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones. When starting with 0 and 1, the first 10 numbers in the sequence are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34.
+
+// Given an array containing the first two numbers of a Fibonacci sequence, and an integer representing the length of the sequence, return an array containing the sequence of the given length.
+
+// Your function should handle sequences of any length greater than or equal to zero.
+// If the length is zero, return an empty array.
+// Note that the starting numbers are part of the sequence.
+
+//Soluzione mia con aiuto ChatGpt per la logica
+function fibonacciSequence(startSequence, length) {
+  // Se la lunghezza è 0, ritorno un array vuoto
+  if (length === 0) return [];
+
+  // Copio gli elementi iniziali della sequenza
+  let sequence = startSequence.slice(0, length);
+
+  // Calcolo i successivi numeri fino ad arrivare alla lunghezza richiesta
+  for (let i = sequence.length; i < length; i++) {
+    sequence.push(sequence[i - 1] + sequence[i - 2]);
+  }
+  return sequence;
+}
+// Esempio:
+console.log(fibonacciSequence([0, 1], 10));
+// Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+// //Valutazione su esercizio mio preChatGpt
+// ✅ Cose positive
+
+// Hai intuito che serviva un array per accumulare i valori della sequenza.
+
+// Hai capito che serviva un ciclo per generare i numeri successivi.
+
+// La funzione ha già due parametri: startSequence e length → questo è corretto.
+
+// ⚠️ Errori principali
+
+// Variabili non dichiarate
+
+// Usi arrayFibonacci senza averlo dichiarato prima.
+
+// arrayLenght non serve a nulla e non è scritto bene (length è la parola giusta).
+
+// Uso improprio di forEach
+
+// forEach non serve per costruire la sequenza, ma solo per iterare sugli elementi già esistenti.
+
+// Inoltre dentro fai numero[i], ma numero è un singolo valore, non un array.
+
+// Somma non salvata
+
+// numero[i] + numero[++i] non viene mai inserita in nessun array → quindi il risultato si perde.
+
+// Sintassi errata
+
+// Hai una parentesi in più dentro forEach.
+
+// Nel return scrivi arrayFibonacci(numero) come se fosse una funzione, ma è un array → errore.
+
+// Chiamata sbagliata della funzione
+
+// Fai fibonacciSequence(arrayFibonacci) ma arrayFibonacci non esiste ancora. Dovevi passare [0,1] e la lunghezza.
+
+// 🌟 Valutazione finale
+
+// Correttezza logica: 2/10 (l’idea c’è ma l’implementazione non funziona).
+
+// Pulizia del codice: 3/10 (nomi confusi, parentesi sbagliate).
+
+// Comprensione del problema: 5/10 (hai capito che serve un ciclo e un array, ma hai scelto gli strumenti sbagliati).
+
+// ➡️ Media complessiva: 3.5/10
+
+// Non funziona, ma la buona notizia è che la tua seconda versione è stata già un enorme passo avanti (da 3,5/10 a 8,5/10 🚀).
+
+// Vuoi che ti riscriva il tuo codice iniziale corretto riga per riga (senza cambiare troppo la struttura, solo aggiustando gli errori), così vedi la differenza?
+
+
