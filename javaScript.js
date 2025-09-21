@@ -265,3 +265,154 @@ console.log(spaceJam("Hello World!"));  // "H  E  L  L  O  W  O  R  L  D  !"
 
 // Vuoi che ti proponga un paio di variazioni più avanzate dello stesso esercizio, per allenarti ancora meglio?
 
+// 15 Agosto 2025
+// /**************************************************************************************************************************** */
+// Data una stringa, restituisci una versione confusa di quella stringa in cui ogni parola viene trasformata utilizzando i seguenti vincoli:
+
+// La prima e l'ultima lettera delle parole rimangono al loro posto.
+// Tutte le lettere tra la prima e l'ultima lettera vengono ordinate alfabeticamente.
+// Le stringhe di input non conterranno punteggiatura e saranno interamente in minuscolo.
+
+
+//Mio codice 
+//Creo la funzione
+function jbelmu(text) {
+//Creo una costante con tutte le lettere e i numeri in minuscolo
+    const caratteri = 'abcdefghijklmnopqrstuvwxyz0123456789';
+//Creo una variabile dove andrà messo il risultato
+    let risultato = '';
+//Creo una variabile usando la lunghezza dei caratteri
+    const randomCaratteri = caratteri.length;
+//Creo un ciclo For per ciclare le lettere
+    for (let i = 1; i < text.lenght-1; i++) {
+//Creo una formual che crea lettere causali partendo dalla variabile sopra
+      indiceCausale = Math.floor(Math.random() * randomCaratteri);
+//Aggiungo il risultato nella variabile Risultato e prendo i caratteri da indice casuale
+      risultato += caratteri.charAt(indiceCasuale);
+    }
+//Returno il risultato
+  return risultato;
+}
+
+//Mando in console la stringa Persona
+console.log(jbelmu("Persona"));
+
+//Il codice di ChatGpt
+//Crea una funzione
+function jbelmu(text) {
+//Fa ritornare il text che viene inserito come valore variabile
+  return text
+//Utilizza il metodo .split per divide le parole
+    .split(" ") // dividiamo in parole
+//Utilizza il metodo .map 
+    .map(word => {
+//Crea una condizione if che determina se le parole sono corte
+      if (word.length <= 2) return word; // parole corte restano uguali
+//Crea una variabile contenente l'indice del valore word 0 che corrisponde al primo numero
+      const first = word[0];
+//Creo una variabile conente l'indice del valore word ultimo 
+      const last = word[word.length - 1];
+//Prende la parola centrale, esclidendo i primi indici
+      const middle = word.slice(1, -1).split("").sort().join("");
+//Fa ritornare la parola scomposta
+      return first + middle + last;
+    })
+//Inserisce degli spazi
+    .join(" ");
+}
+
+// Crea un esempio in console
+console.log(jbelmu("persona amico ciao"));
+// Output: "paenors aioam cao"
+
+// La tua prima versione non era corretta per il compito, perché:
+
+// Errore di logica → stavi generando caratteri casuali invece di riordinare le lettere interne delle parole.
+
+// Errore di sintassi → text.lenght è scritto male (corretto: text.length).
+
+// Variabili non coerenti → usi lettaCausale e indiceCasuale ma non le dichiari o non corrispondono tra loro.
+
+// 👉 Valutazione: 2/10 (l’idea di manipolare i caratteri c’era, ma il risultato finale non rispecchiava la consegna).
+
+//Ho fatto schifo :)
+
+// 16 Agosto 2025
+// /**************************************************************************************************************************** */
+// Date due stringhe, determina se sono anagrammi l'una dell'altra (contengono gli stessi caratteri in qualsiasi ordine).
+
+// Ignora maiuscole e minuscole e spazi vuoti.
+
+//Mio codice (sbagliato)
+//Ho creato una funzione
+function areAnagrams(stringa1, stringa2) {
+//Ho creato una variabile che contenesse il messaggio finale
+    let risultato = "";
+//Ho creato una variabile che contenesse la stringa scompsta e una con la stringa2 scomposta
+    const stringa1Scomposta = [];
+    const stringa2Scomposta = [];
+//Ho ciclato l'indice delle stringhe
+    for (let i = 0; i < stringa1.length; i++) {
+//Qui ho commesso un errore. stringa1[i].push(stringa1Scomposta) Non funziona, perché un carattere della stringa (stringa1[i]) è una lettera, non un array → 
+// non puoi fare .push().
+      stringa1[i].push(stringa1Scomposta);
+    }
+    for (let j = 0; j < stringa2.length; j++) {
+      stringa2[j].push(stringa2Scomposta);
+    }
+//Ho messo in confronto con includes. Altro errore. Uso di includes stringa1Scomposta.includes(stringa2Scomposta) 
+// non controlla se due array hanno lo stesso contenuto → serve un confronto più strutturato.
+    if (stringa1Scomposta.includes(stringa2Scomposta)) {
+      risultato = "Le due stringhe sono anagrammi";
+    } else {
+      risultato= "Le due stringhe non sono anagrammi"
+    }
+  return risultato;
+}
+
+console.log(areAnagrams("cane", "cane"));
+
+//Codice ChatGpt analizzato
+function areAnagrams(stringa1, stringa2) {
+  // Normalizza le stringhe: minuscole e senza spazi
+  const s1 = stringa1.toLowerCase().replace(/\s/g, "");
+  const s2 = stringa2.toLowerCase().replace(/\s/g, "");
+
+  // Se hanno lunghezze diverse, non possono essere anagrammi
+  if (s1.length !== s2.length) return false;
+
+  // Ordina i caratteri e confronta
+  const sorted1 = s1.split("").sort().join("");
+  const sorted2 = s2.split("").sort().join("");
+
+  return sorted1 === sorted2;
+}
+
+console.log(areAnagrams("cane", "neca"));   // true
+console.log(areAnagrams("Cane", "Neca"));   // true (ignora maiuscole)
+console.log(areAnagrams("cane", "cani"));   // false
+
+//Valutazione: 
+
+// Hai fatto un buon tentativo 👍
+// Hai dimostrato di aver capito che:
+
+// dovevi “scomporre” le stringhe per confrontarle,
+
+// serviva un controllo finale per stabilire se erano anagrammi.
+
+// ⚠️ Però ci sono alcuni errori tecnici che ti hanno bloccato:
+
+// hai usato .push() su un carattere (che non è un array),
+
+// hai confrontato gli array con .includes() (che non verifica uguaglianza tra due array completi),
+
+// nei cicli for hai confrontato con la stringa intera invece che con .length.
+
+// 👉 In pratica hai la giusta intuizione, ma devi ancora perfezionare il modo in cui trasformi le stringhe e confronti i dati.
+
+// Se fossi al livello di un esercizio da principiante direi che sei sul 6/10:
+
+// 10 per l’idea,
+
+// 6 per la parte tecnica da migliorare.
