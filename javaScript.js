@@ -416,3 +416,108 @@ console.log(areAnagrams("cane", "cani"));   // false
 // 10 per l’idea,
 
 // 6 per la parte tecnica da migliorare.
+
+// 17 Agosto 2025
+// /**************************************************************************************************************************** */
+// Dato un array di numeri e un target intero, trova due numeri univoci nell'array che sommati diano il valore target. 
+// Restituisci un array con gli indici di quei due numeri, oppure "Target non trovato" 
+// se non ci sono due numeri che sommati danno il valore target.
+
+// L'array restituito dovrebbe avere gli indici in ordine crescente.
+
+//Mia soluzione
+//Ho creato un array di numeri
+const arrayNumeri = [15,5,4,61,52,1,2];
+//Ho creato una variabile target
+const target = 20;
+//>Ho creato una funzione che possa sommare gli indici e confrontarli con il target
+function findTarget(arr, target) {
+//Creo un' array che è la somma che dovrà contenere gli indici dei valori sommati
+  let arraySomma = [];
+//Ciclo con un for tutta la lunghezza dell'array
+  for (let i = 0; i < arr.length; i++) {
+//Creo una variabile che possa calcolare l'indice con l'indice incrementato. 
+//Qui sbaglio perchè sta calcolando l'indice con il successivo. 
+//Inoltre dovrebbe dommare l'indice 0 con il 1,2,3,4,5 e così via 
+    let somma = arr[i] + arr[++i];
+//Creo un if che mette in paragone la somma con il target e, in caso di true, arraySomma diventerebbe somma
+    if (somma === target) {
+      arraySomma = somma;
+    } else {
+      console.log("Target not found")
+    }
+  }  
+//Ritorno il valore
+  return arraySomma;
+}
+
+console.log(findTarget(arrayNumeri, 10));
+
+//Soluzione ChatGpt
+//ChatGpt crea comunque funzione
+function findTarget(arr, target) {
+//Chat crea un ciclo for e ne annida uno al suo interno, così da sommare il numero successivo
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+//Se la somma dei valori dei due cicli è uguale al target,  allora ritorna i due indici 
+      if (arr[i] + arr[j] === target) {
+        return [i, j]; // j > i quindi sono già in ordine crescente
+      }
+    }
+  }
+//Altrimenti
+  return "Target non trovato";
+}
+
+// Esempi
+const arrayNumerii = [15, 5, 4, 61, 52, 1, 2];
+
+console.log(findTarget(arrayNumerii, 17)); // [0, 6] → (15 + 2)
+console.log(findTarget(arrayNumerii, 20)); // "Target non trovato"
+
+//Valutazione:
+// 👍 Punti positivi
+
+// Hai già centrato l’idea di ciclare nell’array e calcolare una somma.
+
+// Hai intuito che devi fare un confronto col target.
+
+// Hai messo il return dentro la funzione → quindi già pensi bene in ottica di riutilizzo del codice.
+
+// ⚠️ Punti da correggere
+
+// Uso di arr[++i]
+
+// Questo incrementa i due volte: una nel ciclo for, una nel ++i.
+
+// Risultato: salti numeri e rischi errori fuori indice.
+
+// Logica limitata
+
+// Confronti solo elementi consecutivi, mentre la richiesta è di trovare due qualunque numeri nell’array.
+
+// Gestione del risultato
+
+// Inizi arraySomma come array ([]) ma poi lo riassegni a un numero (somma).
+
+// Non ritorni gli indici come chiesto, ma la somma.
+
+// Messaggi “Target not found”
+
+// Stampa "Target not found" ad ogni iterazione sbagliata, quindi rischi di avere molti messaggi in console.
+
+// Meglio stamparlo solo una volta alla fine, se non trovi nulla.
+
+// 📝 Valutazione finale
+
+// Direi che il tuo primo codice è un buon punto di partenza (hai intuito bene il cuore del problema: sommare e confrontare), ma:
+
+// la logica è troppo ristretta (solo coppie vicine),
+
+// ci sono errori tecnici (++i),
+
+// e manca l’aderenza ai requisiti (servono gli indici, non la somma).
+
+// 👉 In una scala da 1 a 10 per aderenza al problema, io ti darei 4,5/10:
+
+// non è corretto, ma hai mostrato di aver capito la strada giusta e sei a metà dell’idea.
