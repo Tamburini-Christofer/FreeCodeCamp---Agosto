@@ -21,3 +21,5 @@ Tutti gli snack sono stati risolti da una persona che sta imparando e, in breve,
 Questi esercizi servono proprio a migliorare le lacune e a migliorare il pensiero logico. 
 
 ![Immagine contenente il primo esercizio per esempio](esercizi.png)
+![Immagine contenente esercizi divisi](image.png)
+![Immagine contenente esercizi divisi](image1.png)
