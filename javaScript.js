@@ -521,3 +521,81 @@ console.log(findTarget(arrayNumerii, 20)); // "Target non trovato"
 // 👉 In una scala da 1 a 10 per aderenza al problema, io ti darei 4,5/10:
 
 // non è corretto, ma hai mostrato di aver capito la strada giusta e sei a metà dell’idea.
+
+// 18 Agosto 2025
+// /**************************************************************************************************************************** */
+// Dato un numero intero da zero a 20, restituisci il fattoriale di quel numero. 
+// Il fattoriale di un numero è il prodotto di tutti i numeri compresi tra 1 e il numero dato.
+
+// Il fattoriale di zero è 1.
+
+//Mio codice 
+//Creo una funzione che possa moltiplicare il numero con il successivo
+function factorial(n) {
+//Creo una variabile accumulatrice
+  let risultato = 1;
+//Creo un ciclo che cicla i numeri fino al valore di n (input). Qui ci sta l'errore più grande
+//Moltiplicando i vari numeri abbiamo (esempio con 5) 1*2, 2*3, 3*4, 4* e qui esce dal ciclo. 
+//Corretto è inserire anche il 5
+  for (let i = 1; i < n; i++) {
+//Creo un if in caso di valore 0
+    if (n === 0) {
+      n = 1;
+    } else {
+//Risultato diventa la moltiplicazione di risultato * l'indice attuale
+      risultato = risultato * i; 
+    }
+  } 
+  return risultato;  
+}
+
+console.log(factorial(5));
+
+//Codice ChatGpt
+//Anche Chat crea una funzione
+function factorial(n) {
+//A differenza mia, lei fa ritornare il valore  in caso che n sia uguale a 0
+  if (n === 0) return 1; // caso base
+//Il resto è simile
+  let risultato = 1;
+//Lei include il 5 nel ciclo
+  for (let i = 1; i <= n; i++) {
+//Lei usa la forma abbreviata
+    risultato *= i;
+  }
+  return risultato;
+}
+
+console.log(factorial(5)); // 120
+
+// Valutazione su primo codice: 
+// Ti do una valutazione sincera e incoraggiante:
+
+// ⭐ Punti positivi del tuo codice
+
+// Hai capito che bisogna usare un ciclo per iterare fino a n.
+
+// Hai gestito il caso n === 0, che è importante.
+
+// Hai scritto una funzione riutilizzabile, con un return corretto.
+
+// ⚠️ Punti da migliorare
+
+// L’uso di [i] e [++i] è un errore di sintassi/concetto: non servono le parentesi quadre, e non bisogna incrementare i dentro la moltiplicazione.
+
+// La variabile n viene modificata dentro il ciclo, ma in realtà ti serve mantenerla intatta e usare un accumulatore (tipo risultato).
+
+// La condizione if (n === 0) dovrebbe stare fuori dal ciclo, così eviti controlli inutili.
+
+// 📊 Valutazione complessiva:
+
+// Comprensione del problema: 7/10 👍
+
+// Correttezza del codice: 4/10 ⚠️
+
+// Struttura logica: 5/10
+
+// Impegno e direzione giusta: 8/10 💪
+
+// Direi che sei sulla buona strada: hai colto il concetto, ma devi ancora raffinare l’uso delle variabili e del ciclo.
+// Con un paio di aggiustamenti, il tuo codice funziona perfettamente.
