@@ -599,3 +599,70 @@ console.log(factorial(5)); // 120
 
 // Direi che sei sulla buona strada: hai colto il concetto, ma devi ancora raffinare l’uso delle variabili e del ciclo.
 // Con un paio di aggiustamenti, il tuo codice funziona perfettamente.
+
+// 19 Agosto 2025
+// /**************************************************************************************************************************** */
+// Dato un numero intero positivo fino a 1.000, restituisci la somma di tutti i numeri interi al quadrato da 1 fino al numero.
+
+//Mio codice
+//Ho creato una funzione che calcolasse il numero al quadrato e li sommasse insieme
+function sumOfSquares(n) {
+//Ho creato una variabile array che contenesse tutti i numeri ciclati al quadrato
+    let numeroQuadrato = [];
+//Ho ciclato partendo da uno, tutti i numero compresi da 1 a numero
+    for (let i = 1; i <= n; i++) {
+//Ho salvato una variabile che contenga il numero moltiplicato per se stesso e ho pushato il tutto nella variabile sopra
+     let nSq = i*i;
+     numeroQuadrato.push(nSq);
+    }
+//Ho usato il metodo Reduce per sommare tutto il contenuto dell'array, assegnato a n e restituito il valore di n
+    n = numeroQuadrato.reduce((totale, ammontare) => totale + ammontare)
+  return n;
+}
+
+console.log(sumOfSquares(5))
+
+//Codice Chat Gpt
+//Ha creato una funzione
+function sumOfSquares(n) {
+//Ha creato una variabile somma che contenga il valore 0
+  let somma = 0;
+//Anche lei ha ciclato i numeri, ma ha usato una forma abbrevviata e non ha usato un array
+  for (let i = 1; i <= n; i++) {
+    somma += i * i;
+  }
+  return somma;
+}
+
+console.log(sumOfSquares(5)); // 55
+
+//Codice ChatGpt super veloce
+function sumOfSquares(n) {
+//In questo caso ha fatto tornare tutto in una singola riga e in un singolo return
+  return (n * (n + 1) * (2 * n + 1)) / 6;
+}
+
+console.log(sumOfSquares(5)); // 55
+
+// Valutazione:
+// ✅ Punti positivi:
+
+// Usi bene il ciclo for per generare i quadrati.
+
+// Usi correttamente reduce per sommare tutti gli elementi.
+
+// Il codice è chiaro e leggibile.
+
+// ⚠️ Piccoli miglioramenti possibili:
+
+// Non serve creare un array con tutti i quadrati: puoi sommare direttamente durante il ciclo.
+
+// Puoi semplificare evitando di riusare n come accumulatore (meglio non modificare il parametro in ingresso).
+
+// 📊 Valutazione del tuo codice
+
+// Correttezza: 10/10 (funziona bene)
+
+// Efficienza: 7/10 (l’array è un passaggio in più, ma va bene fino a 1000)
+
+// Pulizia del codice: 8/10
