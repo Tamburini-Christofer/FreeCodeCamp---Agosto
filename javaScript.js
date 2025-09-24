@@ -1,69 +1,71 @@
-// 11 Agosto 2025
-/**************************************************************************************************************************** */
-// Given a string, determine whether the number of vowels in the first half of the string is equal to the number of vowels in the second half.
+//todo 11 Agosto 2025
+/*****************************************************************************************************************************/
+//? Given a string, determine whether the number of vowels in the first half of the string is equal to the number of vowels in the second half.
 
-// The string can contain any characters.
-// The letters a, e, i, o, and u, in either uppercase or lowercase, are considered vowels.
-// If there's an odd number of characters in the string, ignore the center character.
+//? The string can contain any characters.
+//? The letters a, e, i, o, and u, in either uppercase or lowercase, are considered vowels.
+//? If there's an odd number of characters in the string, ignore the center character.
 
-//Soluzione fatta da me                                     QA<
+//*Soluzione fatta da me                                     
 //Ho creato una funzione per l'esercizio
 function isBalanced(valore) {
-//Ho creato una variabile che contenga le vocali di sinistra
+  //Ho creato una variabile che contenga le vocali di sinistra
   let vocaliSinistra = [];
-//Ho creato una variabile che contenga le vocali di destra
+  //Ho creato una variabile che contenga le vocali di destra
   let vocaliDestra = [];
-//Qui verrà inserito il nome del vincitore
+  //Qui verrà inserito il nome del vincitore
   let partePiuVocali = "";
-//Assegno ad una variabile la lunghezza del valore che verrà inserito
+  //Assegno ad una variabile la lunghezza del valore che verrà inserito
   let lunghezza = valore.length;
-//Calcolo l'indice centrale che mi servirà in seguito
+  //Calcolo l'indice centrale che mi servirà in seguito
   let indiceCentrale = Math.floor(lunghezza / 2);
-//Ciclo tutte le lettere
+  //Ciclo tutte le lettere
   for (let i = 0; i < lunghezza; i++) {
-//Ho creato un ciclo if con un operatore logico che mi prende metà stringa
-//e solo e vocali e le pusha nelle variabili create in precedenza
-    if (i < indiceCentrale && (
-        valore[i] === "a" ||
-        valore[i] === "e" ||  
-        valore[i] === "i" || 
-        valore[i] === "o" || 
-        valore[i] === "u" ))
-        {
-      vocaliSinistra.push(valore[i]);
-   } else if (i >= indiceCentrale && (
-        valore[i] === "a" ||
+    //Ho creato un ciclo if con un operatore logico che mi prende metà stringa
+    //e solo e vocali e le pusha nelle variabili create in precedenza
+    if (
+      i < indiceCentrale &&
+      (valore[i] === "a" ||
         valore[i] === "e" ||
         valore[i] === "i" ||
         valore[i] === "o" ||
-        valore[i] === "u" ))
-        {
+        valore[i] === "u")
+    ) {
+      vocaliSinistra.push(valore[i]);
+    } else if (
+      i >= indiceCentrale &&
+      (valore[i] === "a" ||
+        valore[i] === "e" ||
+        valore[i] === "i" ||
+        valore[i] === "o" ||
+        valore[i] === "u")
+    ) {
       vocaliDestra.push(valore[i]);
     }
-//Infine ho creato un if per valutare chi sia il vincitore tra la parte sinsitra
-//o quella destra, con l'opzione pareggio
-  if (vocaliSinistra.length > vocaliDestra.length) {
-    partePiuVocali = ("La parte della stringa con più vocali è la sinsitra")
-  } else if (vocaliSinistra.length < vocaliDestra.length) {
-    partePiuVocali = ("La parte della stringa con più vocali è la destra")
-  } else {
-    partePiuVocali = ("Sono uguali")
+    //Infine ho creato un if per valutare chi sia il vincitore tra la parte sinsitra
+    //o quella destra, con l'opzione pareggio
+    if (vocaliSinistra.length > vocaliDestra.length) {
+      partePiuVocali = "La parte della stringa con più vocali è la sinsitra";
+    } else if (vocaliSinistra.length < vocaliDestra.length) {
+      partePiuVocali = "La parte della stringa con più vocali è la destra";
+    } else {
+      partePiuVocali = "Sono uguali";
+    }
   }
-}
-//Ritorno il valore della funzione
+  //Ritorno il valore della funzione
   return partePiuVocali;
 }
 //Faccio un console.log per mandare il risultato in console
 console.log(isBalanced("canederli"));
 
-//Soluzione ChatGpt
+//*Soluzione ChatGpt
 //Fino a qui è identico al mio
 function isBalanced(valore) {
-//ChatGpt ha creato una variabile const che contenga le vocali, sia maiuscole 
-//che minuscole. Questo è molto comodo per evitare OR inutili
+  //ChatGpt ha creato una variabile const che contenga le vocali, sia maiuscole
+  //che minuscole. Questo è molto comodo per evitare OR inutili
   const vocali = "aeiouAEIOU";
-//ChatGpt ha anche creato due varabili numero, piuttosto che array
-//Questo perchè ha considerato che l'importante sia il numero, non quali lettere sono
+  //ChatGpt ha anche creato due varabili numero, piuttosto che array
+  //Questo perchè ha considerato che l'importante sia il numero, non quali lettere sono
   let vocaliSinistra = 0;
   let vocaliDestra = 0;
 
@@ -71,13 +73,13 @@ function isBalanced(valore) {
   let indiceCentrale = Math.floor(lunghezza / 2);
 
   for (let i = 0; i < lunghezza; i++) {
-//La più grande differenza di tutte sta nell'aver usato un metodo. 
-//Con Includes ha preso tutte le vocali in una volta sola. 
-//Con il successivo if ha messo in confronto quelle vocali prima con la parte sinistra,
-//poi con la parte destra
+    //La più grande differenza di tutte sta nell'aver usato un metodo.
+    //Con Includes ha preso tutte le vocali in una volta sola.
+    //Con il successivo if ha messo in confronto quelle vocali prima con la parte sinistra,
+    //poi con la parte destra
     if (vocali.includes(valore[i])) {
       if (i < indiceCentrale) {
-//poi ha aumentato il valore nuemrico della variabile interessata
+        //poi ha aumentato il valore nuemrico della variabile interessata
         vocaliSinistra++;
       } else if (lunghezza % 2 === 0 || i > indiceCentrale) {
         vocaliDestra++;
@@ -85,8 +87,8 @@ function isBalanced(valore) {
     }
   }
 
-//Infine ha messo i numeri delle due variabili in confronto e ha fatto tornare 
-//la scritta idonea.
+  //Infine ha messo i numeri delle due variabili in confronto e ha fatto tornare
+  //la scritta idonea.
   if (vocaliSinistra === vocaliDestra) {
     return "Le due metà hanno lo stesso numero di vocali ✅";
   } else if (vocaliSinistra > vocaliDestra) {
@@ -96,7 +98,7 @@ function isBalanced(valore) {
   }
 }
 
-//Ha creato infine degli esempi 
+//Ha creato infine degli esempi
 // Esempi
 console.log(isBalanced("canederli")); // → destra ha più vocali
 console.log(isBalanced("aibohphobia")); // → uguali
@@ -128,18 +130,17 @@ Il codice è un po’ ripetitivo: il controllo delle vocali con tanti || può di
 
 🌟 Valutazione complessiva: direi 7,5/10. Hai centrato la logica, devi solo pulire la sintassi e rendere più elegante il controllo.*/
 
+//todo 13 Agosto 2025
+/**************************************************************************************************************************** */
+//? The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones. When starting with 0 and 1, the first 10 numbers in the sequence are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34.
 
-// 13 Agosto 2025
-// /**************************************************************************************************************************** */
-// The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones. When starting with 0 and 1, the first 10 numbers in the sequence are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34.
+//? Given an array containing the first two numbers of a Fibonacci sequence, and an integer representing the length of the sequence, return an array containing the sequence of the given length.
 
-// Given an array containing the first two numbers of a Fibonacci sequence, and an integer representing the length of the sequence, return an array containing the sequence of the given length.
+//? Your function should handle sequences of any length greater than or equal to zero.
+//? If the length is zero, return an empty array.
+//? Note that the starting numbers are part of the sequence.
 
-// Your function should handle sequences of any length greater than or equal to zero.
-// If the length is zero, return an empty array.
-// Note that the starting numbers are part of the sequence.
-
-//Soluzione mia con aiuto ChatGpt per la logica
+//*Soluzione mia con aiuto ChatGpt per la logica
 function fibonacciSequence(startSequence, length) {
   // Se la lunghezza è 0, ritorno un array vuoto
   if (length === 0) return [];
@@ -157,7 +158,7 @@ function fibonacciSequence(startSequence, length) {
 console.log(fibonacciSequence([0, 1], 10));
 // Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
-// //Valutazione su esercizio mio preChatGpt
+//Valutazione su esercizio mio preChatGpt
 // ✅ Cose positive
 
 // Hai intuito che serviva un array per accumulare i valori della sequenza.
@@ -208,40 +209,39 @@ console.log(fibonacciSequence([0, 1], 10));
 
 // Vuoi che ti riscriva il tuo codice iniziale corretto riga per riga (senza cambiare troppo la struttura, solo aggiustando gli errori), così vedi la differenza?
 
-// 14 Agosto 2025
-// /**************************************************************************************************************************** */
-// Data una stringa, rimuovi tutti gli spazi dalla stringa, inserisci due spazi tra ogni carattere, converti tutte le lettere alfabetiche in maiuscolo e restituisci il risultato.
+//todo 14 Agosto 2025
+/**************************************************************************************************************************** */
+//? Data una stringa, rimuovi tutti gli spazi dalla stringa, inserisci due spazi tra ogni carattere, converti tutte le lettere alfabetiche in maiuscolo e restituisci il risultato.
 
-// I caratteri non alfabetici devono rimanere invariati (ad eccezione degli spazi).
+//? I caratteri non alfabetici devono rimanere invariati (ad eccezione degli spazi).
 
-//Mio codice 
-//Creo la funzione 
+//*Mio codice
+//Creo la funzione
 function spaceJam(stringa) {
-
-//Tolgo gli spazi (Errore!! Trim elimina solo gli spazi iniziali e finali)
-    stringa = stringa.trim();
-//Separo i caratteri
-    stringa = stringa.split("");
-//Creo uno spazio tra caratteri
-    stringa = stringa.join(" ");
-//Rendiamo tutto maiuscolo
-    stringa = stringa.toUpperCase();
-//Returniamo a stringa
+  //Tolgo gli spazi (Errore!! Trim elimina solo gli spazi iniziali e finali)
+  stringa = stringa.trim();
+  //Separo i caratteri
+  stringa = stringa.split("");
+  //Creo uno spazio tra caratteri
+  stringa = stringa.join(" ");
+  //Rendiamo tutto maiuscolo
+  stringa = stringa.toUpperCase();
+  //Returniamo a stringa
   return stringa;
 }
 console.log(spaceJam("ho 23 gatti e 33 cani nel giardino 1"));
 
-//Codice ChatGpt
+//*Codice ChatGpt
 function spaceJam(stringa) {
   stringa = stringa.replace(/\s+/g, ""); // rimuove tutti gli spazi
-  stringa = stringa.split("");           // separa i caratteri
-  stringa = stringa.join("  ");          // due spazi tra i caratteri
-  stringa = stringa.toUpperCase();       // trasforma in maiuscolo
+  stringa = stringa.split(""); // separa i caratteri
+  stringa = stringa.join("  "); // due spazi tra i caratteri
+  stringa = stringa.toUpperCase(); // trasforma in maiuscolo
   return stringa;
 }
 
-console.log(spaceJam("ho 22 gatti e 33 cani nel giardino 1"));         // "C  A  N  E"
-console.log(spaceJam("Hello World!"));  // "H  E  L  L  O  W  O  R  L  D  !"
+console.log(spaceJam("ho 22 gatti e 33 cani nel giardino 1")); // "C  A  N  E"
+console.log(spaceJam("Hello World!")); // "H  E  L  L  O  W  O  R  L  D  !"
 
 // Direi che il tuo esercizio mostra che hai capito bene i passaggi fondamentali per trasformare una stringa in JavaScript:
 
@@ -265,60 +265,61 @@ console.log(spaceJam("Hello World!"));  // "H  E  L  L  O  W  O  R  L  D  !"
 
 // Vuoi che ti proponga un paio di variazioni più avanzate dello stesso esercizio, per allenarti ancora meglio?
 
-// 15 Agosto 2025
-// /**************************************************************************************************************************** */
-// Data una stringa, restituisci una versione confusa di quella stringa in cui ogni parola viene trasformata utilizzando i seguenti vincoli:
+//todo 15 Agosto 2025
+/**************************************************************************************************************************** */
+//? Data una stringa, restituisci una versione confusa di quella stringa in cui ogni parola viene trasformata utilizzando i seguenti vincoli:
 
-// La prima e l'ultima lettera delle parole rimangono al loro posto.
-// Tutte le lettere tra la prima e l'ultima lettera vengono ordinate alfabeticamente.
-// Le stringhe di input non conterranno punteggiatura e saranno interamente in minuscolo.
+//?  La prima e l'ultima lettera delle parole rimangono al loro posto.
+//? Tutte le lettere tra la prima e l'ultima lettera vengono ordinate alfabeticamente.
+//? Le stringhe di input non conterranno punteggiatura e saranno interamente in minuscolo.
 
-
-//Mio codice 
+//*Mio codice
 //Creo la funzione
 function jbelmu(text) {
-//Creo una costante con tutte le lettere e i numeri in minuscolo
-    const caratteri = 'abcdefghijklmnopqrstuvwxyz0123456789';
-//Creo una variabile dove andrà messo il risultato
-    let risultato = '';
-//Creo una variabile usando la lunghezza dei caratteri
-    const randomCaratteri = caratteri.length;
-//Creo un ciclo For per ciclare le lettere
-    for (let i = 1; i < text.lenght-1; i++) {
-//Creo una formual che crea lettere causali partendo dalla variabile sopra
-      indiceCausale = Math.floor(Math.random() * randomCaratteri);
-//Aggiungo il risultato nella variabile Risultato e prendo i caratteri da indice casuale
-      risultato += caratteri.charAt(indiceCasuale);
-    }
-//Returno il risultato
+  //Creo una costante con tutte le lettere e i numeri in minuscolo
+  const caratteri = "abcdefghijklmnopqrstuvwxyz0123456789";
+  //Creo una variabile dove andrà messo il risultato
+  let risultato = "";
+  //Creo una variabile usando la lunghezza dei caratteri
+  const randomCaratteri = caratteri.length;
+  //Creo un ciclo For per ciclare le lettere
+  for (let i = 1; i < text.lenght - 1; i++) {
+    //Creo una formual che crea lettere causali partendo dalla variabile sopra
+    indiceCausale = Math.floor(Math.random() * randomCaratteri);
+    //Aggiungo il risultato nella variabile Risultato e prendo i caratteri da indice casuale
+    risultato += caratteri.charAt(indiceCasuale);
+  }
+  //Returno il risultato
   return risultato;
 }
 
 //Mando in console la stringa Persona
 console.log(jbelmu("Persona"));
 
-//Il codice di ChatGpt
+//*Il codice di ChatGpt
 //Crea una funzione
 function jbelmu(text) {
-//Fa ritornare il text che viene inserito come valore variabile
-  return text
-//Utilizza il metodo .split per divide le parole
-    .split(" ") // dividiamo in parole
-//Utilizza il metodo .map 
-    .map(word => {
-//Crea una condizione if che determina se le parole sono corte
-      if (word.length <= 2) return word; // parole corte restano uguali
-//Crea una variabile contenente l'indice del valore word 0 che corrisponde al primo numero
-      const first = word[0];
-//Creo una variabile conente l'indice del valore word ultimo 
-      const last = word[word.length - 1];
-//Prende la parola centrale, esclidendo i primi indici
-      const middle = word.slice(1, -1).split("").sort().join("");
-//Fa ritornare la parola scomposta
-      return first + middle + last;
-    })
-//Inserisce degli spazi
-    .join(" ");
+  //Fa ritornare il text che viene inserito come valore variabile
+  return (
+    text
+      //Utilizza il metodo .split per divide le parole
+      .split(" ") // dividiamo in parole
+      //Utilizza il metodo .map
+      .map((word) => {
+        //Crea una condizione if che determina se le parole sono corte
+        if (word.length <= 2) return word; // parole corte restano uguali
+        //Crea una variabile contenente l'indice del valore word 0 che corrisponde al primo numero
+        const first = word[0];
+        //Creo una variabile conente l'indice del valore word ultimo
+        const last = word[word.length - 1];
+        //Prende la parola centrale, esclidendo i primi indici
+        const middle = word.slice(1, -1).split("").sort().join("");
+        //Fa ritornare la parola scomposta
+        return first + middle + last;
+      })
+      //Inserisce degli spazi
+      .join(" ")
+  );
 }
 
 // Crea un esempio in console
@@ -337,42 +338,42 @@ console.log(jbelmu("persona amico ciao"));
 
 //Ho fatto schifo :)
 
-// 16 Agosto 2025
-// /**************************************************************************************************************************** */
-// Date due stringhe, determina se sono anagrammi l'una dell'altra (contengono gli stessi caratteri in qualsiasi ordine).
+//todo 16 Agosto 2025
+/**************************************************************************************************************************** */
+//? Date due stringhe, determina se sono anagrammi l'una dell'altra (contengono gli stessi caratteri in qualsiasi ordine).
 
-// Ignora maiuscole e minuscole e spazi vuoti.
+//? Ignora maiuscole e minuscole e spazi vuoti.
 
-//Mio codice (sbagliato)
+//*Mio codice (sbagliato)
 //Ho creato una funzione
 function areAnagrams(stringa1, stringa2) {
-//Ho creato una variabile che contenesse il messaggio finale
-    let risultato = "";
-//Ho creato una variabile che contenesse la stringa scompsta e una con la stringa2 scomposta
-    const stringa1Scomposta = [];
-    const stringa2Scomposta = [];
-//Ho ciclato l'indice delle stringhe
-    for (let i = 0; i < stringa1.length; i++) {
-//Qui ho commesso un errore. stringa1[i].push(stringa1Scomposta) Non funziona, perché un carattere della stringa (stringa1[i]) è una lettera, non un array → 
-// non puoi fare .push().
-      stringa1[i].push(stringa1Scomposta);
-    }
-    for (let j = 0; j < stringa2.length; j++) {
-      stringa2[j].push(stringa2Scomposta);
-    }
-//Ho messo in confronto con includes. Altro errore. Uso di includes stringa1Scomposta.includes(stringa2Scomposta) 
-// non controlla se due array hanno lo stesso contenuto → serve un confronto più strutturato.
-    if (stringa1Scomposta.includes(stringa2Scomposta)) {
-      risultato = "Le due stringhe sono anagrammi";
-    } else {
-      risultato= "Le due stringhe non sono anagrammi"
-    }
+  //Ho creato una variabile che contenesse il messaggio finale
+  let risultato = "";
+  //Ho creato una variabile che contenesse la stringa scompsta e una con la stringa2 scomposta
+  const stringa1Scomposta = [];
+  const stringa2Scomposta = [];
+  //Ho ciclato l'indice delle stringhe
+  for (let i = 0; i < stringa1.length; i++) {
+    //Qui ho commesso un errore. stringa1[i].push(stringa1Scomposta) Non funziona, perché un carattere della stringa (stringa1[i]) è una lettera, non un array →
+    // non puoi fare .push().
+    stringa1[i].push(stringa1Scomposta);
+  }
+  for (let j = 0; j < stringa2.length; j++) {
+    stringa2[j].push(stringa2Scomposta);
+  }
+  //Ho messo in confronto con includes. Altro errore. Uso di includes stringa1Scomposta.includes(stringa2Scomposta)
+  // non controlla se due array hanno lo stesso contenuto → serve un confronto più strutturato.
+  if (stringa1Scomposta.includes(stringa2Scomposta)) {
+    risultato = "Le due stringhe sono anagrammi";
+  } else {
+    risultato = "Le due stringhe non sono anagrammi";
+  }
   return risultato;
 }
 
 console.log(areAnagrams("cane", "cane"));
 
-//Codice ChatGpt analizzato
+//*Codice ChatGpt analizzato
 function areAnagrams(stringa1, stringa2) {
   // Normalizza le stringhe: minuscole e senza spazi
   const s1 = stringa1.toLowerCase().replace(/\s/g, "");
@@ -388,11 +389,11 @@ function areAnagrams(stringa1, stringa2) {
   return sorted1 === sorted2;
 }
 
-console.log(areAnagrams("cane", "neca"));   // true
-console.log(areAnagrams("Cane", "Neca"));   // true (ignora maiuscole)
-console.log(areAnagrams("cane", "cani"));   // false
+console.log(areAnagrams("cane", "neca")); // true
+console.log(areAnagrams("Cane", "Neca")); // true (ignora maiuscole)
+console.log(areAnagrams("cane", "cani")); // false
 
-//Valutazione: 
+//Valutazione:
 
 // Hai fatto un buon tentativo 👍
 // Hai dimostrato di aver capito che:
@@ -417,55 +418,55 @@ console.log(areAnagrams("cane", "cani"));   // false
 
 // 6 per la parte tecnica da migliorare.
 
-// 17 Agosto 2025
-// /**************************************************************************************************************************** */
-// Dato un array di numeri e un target intero, trova due numeri univoci nell'array che sommati diano il valore target. 
-// Restituisci un array con gli indici di quei due numeri, oppure "Target non trovato" 
-// se non ci sono due numeri che sommati danno il valore target.
+//todo 17 Agosto 2025
+/**************************************************************************************************************************** */
+//? Dato un array di numeri e un target intero, trova due numeri univoci nell'array che sommati diano il valore target.
+//? Restituisci un array con gli indici di quei due numeri, oppure "Target non trovato"
+//? se non ci sono due numeri che sommati danno il valore target.
 
-// L'array restituito dovrebbe avere gli indici in ordine crescente.
+//? L'array restituito dovrebbe avere gli indici in ordine crescente.
 
-//Mia soluzione
+//*Mia soluzione
 //Ho creato un array di numeri
-const arrayNumeri = [15,5,4,61,52,1,2];
+const arrayNumeri = [15, 5, 4, 61, 52, 1, 2];
 //Ho creato una variabile target
 const target = 20;
 //>Ho creato una funzione che possa sommare gli indici e confrontarli con il target
 function findTarget(arr, target) {
-//Creo un' array che è la somma che dovrà contenere gli indici dei valori sommati
+  //Creo un' array che è la somma che dovrà contenere gli indici dei valori sommati
   let arraySomma = [];
-//Ciclo con un for tutta la lunghezza dell'array
+  //Ciclo con un for tutta la lunghezza dell'array
   for (let i = 0; i < arr.length; i++) {
-//Creo una variabile che possa calcolare l'indice con l'indice incrementato. 
-//Qui sbaglio perchè sta calcolando l'indice con il successivo. 
-//Inoltre dovrebbe dommare l'indice 0 con il 1,2,3,4,5 e così via 
+    //Creo una variabile che possa calcolare l'indice con l'indice incrementato.
+    //Qui sbaglio perchè sta calcolando l'indice con il successivo.
+    //Inoltre dovrebbe dommare l'indice 0 con il 1,2,3,4,5 e così via
     let somma = arr[i] + arr[++i];
-//Creo un if che mette in paragone la somma con il target e, in caso di true, arraySomma diventerebbe somma
+    //Creo un if che mette in paragone la somma con il target e, in caso di true, arraySomma diventerebbe somma
     if (somma === target) {
       arraySomma = somma;
     } else {
-      console.log("Target not found")
+      console.log("Target not found");
     }
-  }  
-//Ritorno il valore
+  }
+  //Ritorno il valore
   return arraySomma;
 }
 
 console.log(findTarget(arrayNumeri, 10));
 
-//Soluzione ChatGpt
+//*Soluzione ChatGpt
 //ChatGpt crea comunque funzione
 function findTarget(arr, target) {
-//Chat crea un ciclo for e ne annida uno al suo interno, così da sommare il numero successivo
+  //Chat crea un ciclo for e ne annida uno al suo interno, così da sommare il numero successivo
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
-//Se la somma dei valori dei due cicli è uguale al target,  allora ritorna i due indici 
+      //Se la somma dei valori dei due cicli è uguale al target,  allora ritorna i due indici
       if (arr[i] + arr[j] === target) {
         return [i, j]; // j > i quindi sono già in ordine crescente
       }
     }
   }
-//Altrimenti
+  //Altrimenti
   return "Target non trovato";
 }
 
@@ -522,45 +523,45 @@ console.log(findTarget(arrayNumerii, 20)); // "Target non trovato"
 
 // non è corretto, ma hai mostrato di aver capito la strada giusta e sei a metà dell’idea.
 
-// 18 Agosto 2025
-// /**************************************************************************************************************************** */
-// Dato un numero intero da zero a 20, restituisci il fattoriale di quel numero. 
+//todo 18 Agosto 2025
+/**************************************************************************************************************************** */
+// Dato un numero intero da zero a 20, restituisci il fattoriale di quel numero.
 // Il fattoriale di un numero è il prodotto di tutti i numeri compresi tra 1 e il numero dato.
 
 // Il fattoriale di zero è 1.
 
-//Mio codice 
+//*Mio codice
 //Creo una funzione che possa moltiplicare il numero con il successivo
 function factorial(n) {
-//Creo una variabile accumulatrice
+  //Creo una variabile accumulatrice
   let risultato = 1;
-//Creo un ciclo che cicla i numeri fino al valore di n (input). Qui ci sta l'errore più grande
-//Moltiplicando i vari numeri abbiamo (esempio con 5) 1*2, 2*3, 3*4, 4* e qui esce dal ciclo. 
-//Corretto è inserire anche il 5
+  //Creo un ciclo che cicla i numeri fino al valore di n (input). Qui ci sta l'errore più grande
+  //Moltiplicando i vari numeri abbiamo (esempio con 5) 1*2, 2*3, 3*4, 4* e qui esce dal ciclo.
+  //Corretto è inserire anche il 5
   for (let i = 1; i < n; i++) {
-//Creo un if in caso di valore 0
+    //Creo un if in caso di valore 0
     if (n === 0) {
       n = 1;
     } else {
-//Risultato diventa la moltiplicazione di risultato * l'indice attuale
-      risultato = risultato * i; 
+      //Risultato diventa la moltiplicazione di risultato * l'indice attuale
+      risultato = risultato * i;
     }
-  } 
-  return risultato;  
+  }
+  return risultato;
 }
 
 console.log(factorial(5));
 
-//Codice ChatGpt
+//*Codice ChatGpt
 //Anche Chat crea una funzione
 function factorial(n) {
-//A differenza mia, lei fa ritornare il valore  in caso che n sia uguale a 0
+  //A differenza mia, lei fa ritornare il valore  in caso che n sia uguale a 0
   if (n === 0) return 1; // caso base
-//Il resto è simile
+  //Il resto è simile
   let risultato = 1;
-//Lei include il 5 nel ciclo
+  //Lei include il 5 nel ciclo
   for (let i = 1; i <= n; i++) {
-//Lei usa la forma abbreviata
+    //Lei usa la forma abbreviata
     risultato *= i;
   }
   return risultato;
@@ -568,7 +569,7 @@ function factorial(n) {
 
 console.log(factorial(5)); // 120
 
-// Valutazione su primo codice: 
+// Valutazione su primo codice:
 // Ti do una valutazione sincera e incoraggiante:
 
 // ⭐ Punti positivi del tuo codice
@@ -600,34 +601,34 @@ console.log(factorial(5)); // 120
 // Direi che sei sulla buona strada: hai colto il concetto, ma devi ancora raffinare l’uso delle variabili e del ciclo.
 // Con un paio di aggiustamenti, il tuo codice funziona perfettamente.
 
-// 19 Agosto 2025
-// /**************************************************************************************************************************** */
-// Dato un numero intero positivo fino a 1.000, restituisci la somma di tutti i numeri interi al quadrato da 1 fino al numero.
+//todo 19 Agosto 2025
+/**************************************************************************************************************************** */
+//?Dato un numero intero positivo fino a 1.000, restituisci la somma di tutti i numeri interi al quadrato da 1 fino al numero.
 
-//Mio codice
+//*Mio codice
 //Ho creato una funzione che calcolasse il numero al quadrato e li sommasse insieme
 function sumOfSquares(n) {
-//Ho creato una variabile array che contenesse tutti i numeri ciclati al quadrato
-    let numeroQuadrato = [];
-//Ho ciclato partendo da uno, tutti i numero compresi da 1 a numero
-    for (let i = 1; i <= n; i++) {
-//Ho salvato una variabile che contenga il numero moltiplicato per se stesso e ho pushato il tutto nella variabile sopra
-     let nSq = i*i;
-     numeroQuadrato.push(nSq);
-    }
-//Ho usato il metodo Reduce per sommare tutto il contenuto dell'array, assegnato a n e restituito il valore di n
-    n = numeroQuadrato.reduce((totale, ammontare) => totale + ammontare)
+  //Ho creato una variabile array che contenesse tutti i numeri ciclati al quadrato
+  let numeroQuadrato = [];
+  //Ho ciclato partendo da uno, tutti i numero compresi da 1 a numero
+  for (let i = 1; i <= n; i++) {
+    //Ho salvato una variabile che contenga il numero moltiplicato per se stesso e ho pushato il tutto nella variabile sopra
+    let nSq = i * i;
+    numeroQuadrato.push(nSq);
+  }
+  //Ho usato il metodo Reduce per sommare tutto il contenuto dell'array, assegnato a n e restituito il valore di n
+  n = numeroQuadrato.reduce((totale, ammontare) => totale + ammontare);
   return n;
 }
 
-console.log(sumOfSquares(5))
+console.log(sumOfSquares(5));
 
-//Codice Chat Gpt
+//*Codice Chat Gpt
 //Ha creato una funzione
 function sumOfSquares(n) {
-//Ha creato una variabile somma che contenga il valore 0
+  //Ha creato una variabile somma che contenga il valore 0
   let somma = 0;
-//Anche lei ha ciclato i numeri, ma ha usato una forma abbrevviata e non ha usato un array
+  //Anche lei ha ciclato i numeri, ma ha usato una forma abbrevviata e non ha usato un array
   for (let i = 1; i <= n; i++) {
     somma += i * i;
   }
@@ -638,7 +639,7 @@ console.log(sumOfSquares(5)); // 55
 
 //Codice ChatGpt super veloce
 function sumOfSquares(n) {
-//In questo caso ha fatto tornare tutto in una singola riga e in un singolo return
+  //In questo caso ha fatto tornare tutto in una singola riga e in un singolo return
   return (n * (n + 1) * (2 * n + 1)) / 6;
 }
 
